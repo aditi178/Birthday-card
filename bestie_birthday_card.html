@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Birthday Card for Bestie</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #4b2c6f;
+    }
+
+    .card {
+      background: #f3e8ff;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(161, 140, 209, 0.5);
+      width: 360px;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(253, 160, 133, 0.7);
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #6a1b9a;
+      text-shadow: 0 2px 5px rgba(106, 27, 154, 0.6);
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+      color: #5e3a70;
+    }
+
+    .emoji {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .button {
+      background: #6a1b9a;
+      border: none;
+      border-radius: 30px;
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(106, 27, 154, 0.6);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .button:hover {
+      background: #4a148c;
+      box-shadow: 0 8px 25px rgba(74, 20, 140, 0.8);
+    }
+  </style>
+  <style>
+    /* Photobooth style photo size and layout filling the whole card */
+    .memory-photo {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: block;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s forwards, floatMotion 3s ease-in-out infinite alternate;
+      animation-delay: 0s, 0.5s;
+    }
+
+    @keyframes floatMotion {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .memories-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 10px;
+      border: 2px solid #d6336c;
+      border-radius: 10px;
+      background: #fff0f5;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .memory-item {
+      margin: 0;
+      text-align: center;
+      width: 70px;
+    }
+
+    .caption {
+      font-size: 0.75rem;
+      color: #6b4c4c;
+      margin-top: 4px;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: unset;
+    }
+  </style>
+  <style>
+    /* From Uiverse.io by alexruix */ 
+    .loader {
+      width: 80px;
+      height: 50px;
+      position: relative;
+    }
+
+    .loader-text {
+      position: absolute;
+      top: 0;
+      padding: 0;
+      margin: 0;
+      color: #C8B6FF;
+      animation: text_713 3.5s ease both infinite;
+      font-size: .8rem;
+      letter-spacing: 1px;
+    }
+
+    .load {
+      background-color: #9A79FF;
+      border-radius: 50px;
+      display: block;
+      height: 16px;
+      width: 16px;
+      bottom: 0;
+      position: absolute;
+      transform: translateX(64px);
+      animation: loading_713 3.5s ease both infinite;
+    }
+
+    .load::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: #D1C2FF;
+      border-radius: inherit;
+      animation: loading2_713 3.5s ease both infinite;
+    }
+
+    @keyframes text_713 {
+      0% {
+        letter-spacing: 1px;
+        transform: translateX(0px);
+      }
+
+      40% {
+        letter-spacing: 2px;
+        transform: translateX(26px);
+      }
+
+      80% {
+        letter-spacing: 1px;
+        transform: translateX(32px);
+      }
+
+      90% {
+        letter-spacing: 2px;
+        transform: translateX(0px);
+      }
+
+      100% {
+        letter-spacing: 1px;
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes loading_713 {
+      0% {
+        width: 16px;
+        transform: translateX(0px);
+      }
+
+      40% {
+        width: 100%;
+        transform: translateX(0px);
+      }
+
+      80% {
+        width: 16px;
+        transform: translateX(64px);
+      }
+
+      90% {
+        width: 100%;
+        transform: translateX(0px);
+      }
+
+      100% {
+        width: 16px;
+        transform: translateX(0px);
+      }
+    }
+
+    @keyframes loading2_713 {
+      0% {
+        transform: translateX(0px);
+        width: 16px;
+      }
+
+      40% {
+        transform: translateX(0%);
+        width: 80%;
+      }
+
+      80% {
+        width: 100%;
+        transform: translateX(0px);
+      }
+
+      90% {
+        width: 80%;
+        transform: translateX(15px);
+      }
+
+      100% {
+        transform: translateX(0px);
+        width: 16px;
+      }
+    }
+  </style>
+  <script>
+    function showLoadingAndDiary() {
+      const card = document.querySelector('.card');
+      card.innerHTML = `<!-- From Uiverse.io by alexruix --> 
+  <div class="loader">
+    <span class="loader-text">loading</span>
+    <span class="load"></span>
+  </div>`;
+      setTimeout(() => {
+        const photos = [
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.18 (1).jpeg", alt: "Memory 1", caption: "Forever friends"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.18.jpeg", alt: "Memory 2", caption: "Laughs and love"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.19.jpeg", alt: "Memory 3", caption: "Unbreakable bond"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.20.jpeg", alt: "Memory 4", caption: "Adventures together"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.21 (1).jpeg", alt: "Memory 5", caption: "Memories made"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.21.jpeg", alt: "Memory 6", caption: "Side by side"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.22 (1).jpeg", alt: "Memory 7", caption: "Bestie vibes"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.22 (2).jpeg", alt: "Memory 8", caption: "Always together"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.22.jpeg", alt: "Memory 9", caption: "Cherished moments"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.23 (1).jpeg", alt: "Memory 10", caption: "Laugh till we drop"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.23.jpeg", alt: "Memory 11", caption: "Through thick and thin"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.24.jpeg", alt: "Memory 12", caption: "Forever and always"},
+          {src: "image/WhatsApp Image 2025-04-15 at 14.38.26.jpeg", alt: "Memory 13", caption: "Soul sisters"},
+          {src: "image/whatsapp1.jpeg", alt: "Memory 14", caption: "Bestie forever"}
+        ];
+        let galleryHTML = '<div class="memories-gallery">';
+        photos.forEach((photo, index) => {
+          galleryHTML += `
+            <div class="memory-item" style="--rotate: ${index % 5 - 2}">
+              <img src="${photo.src}" alt="${photo.alt}" class="memory-photo animate-photo" style="animation-delay: ${index * 0.1}s;" />
+              <div class="caption">${photo.caption}</div>
+            </div>
+          `;
+        });
+        galleryHTML += '</div><button class="button" onclick="location.reload()">Back</button>';
+        card.innerHTML = galleryHTML;
+      }, 2000);
+    }
+  </script>
+</head>
+<body>
+  <div class="card">
+    <div class="emoji">🎉🎂💖</div>
+    <h1>Happy Birthday Dhruvi!</h1>
+    <p>Wishing you a day filled with love, laughter, and endless joy. You deserve all the happiness in the world!</p>
+    <button class="button" onclick="showLoadingAndDiary()">Celebrate</button>
+  </div>
+</body>
+</html>
